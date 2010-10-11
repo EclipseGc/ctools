@@ -32,7 +32,7 @@ function ctools_node_author_content_type_render($subtype, $conf, $panel_args, $c
   $block = new stdClass();
   $block->module  = 'node_author';
   $block->title   = t('Author');
-  $block->content = !empty($conf['link']) ? theme('username', $node) : check_plain($node->name ? $node->name : variable_get('anonymous', t('Anonymous')));
+  $block->content = !empty($conf['link']) ? theme('username', array('account' => user_load(array($node->uid)))) : check_plain($node->name ? $node->name : variable_get('anonymous', t('Anonymous')));
   $block->delta   = $node->nid;
 
   return $block;
